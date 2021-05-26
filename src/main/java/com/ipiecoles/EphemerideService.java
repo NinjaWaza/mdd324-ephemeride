@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 
 public class EphemerideService {
@@ -53,7 +54,7 @@ public class EphemerideService {
     public Ephemeride getResponse(LocalDate date){
         LocalDate aujourdhui = date;
         Ephemeride ephemeride = new Ephemeride();
-        ephemeride.setDateJour(aujourdhui.format(DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy")));
+        ephemeride.setDateJour(aujourdhui.format(DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy", Locale.FRENCH)));
         ephemeride.setFeteDuJour(this.getEphemeride(aujourdhui));
         ephemeride.setJourAnnee(aujourdhui.getDayOfYear());
         ephemeride.setJoursRestants(aujourdhui.isLeapYear() ? 366 - aujourdhui.getDayOfYear() : 365 - aujourdhui.getDayOfYear());
